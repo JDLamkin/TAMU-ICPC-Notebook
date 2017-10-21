@@ -1,5 +1,5 @@
 /* Bellman-ford is single-source shortest path that *does* handle negative edge weights. 
- * Running time: O(EV)
+ * Running time: O(E*V)
  */
 
 #include <vector>

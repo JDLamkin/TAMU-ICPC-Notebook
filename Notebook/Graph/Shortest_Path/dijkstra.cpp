@@ -1,5 +1,5 @@
 /* Dijkstra's is single-source shortest path that does NOT handle negative edge weights. 
- * Running time: O(ElogE)
+ * Running time: O(E*log(E))
  */
 
 #include <vector>

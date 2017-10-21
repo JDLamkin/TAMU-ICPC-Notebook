@@ -1,3 +1,7 @@
+/* Dijkstra's is single-source shortest path that does NOT handle negative edge weights. 
+ * Running time: O(ElogE)
+ */
+
 #include <vector>
 #include <limits>
 #include <map>
@@ -7,8 +11,10 @@ using namespace std;
 
 typedef vector<map<int, int>> graph;
 
+#define INF numeric_limits<int>::max()
+
 vector<int> dist(graph &g, int src) {
-    vector<int> dist(g.size(), numeric_limits<int>::max());
+    vector<int> dist(g.size(), INF);
     vector<bool> vis(g.size());
 
     auto cmp = [](pair<int, int> one, pair<int, int> two) { return one.second > two.second; };

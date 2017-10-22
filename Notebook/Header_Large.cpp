@@ -1,11 +1,13 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include <queue>
+#include <stack>
 #include <map>
+#include <algorithm>
 
 using namespace std;
 
 typedef long long ll;
 typedef unsigned long long ull;
 
-typedef vector<map<int, int>> graph;
+typedef vector<map<ull, ll>> graph;

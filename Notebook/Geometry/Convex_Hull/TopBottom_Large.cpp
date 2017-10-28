@@ -30,7 +30,7 @@ vector<Point> convex_hull(vector<Point>& p){
 		return a.x == b.x ? a.y > b.y : a.x < b.x;
 	});
 
-	//get two halfs of c_hull
+	//get two halves of c_hull
 	vector<Point> upper = half_hull(p.begin(), --p.end());
 	vector<Point> lower = half_hull(p.rbegin(), --p.rend());
 

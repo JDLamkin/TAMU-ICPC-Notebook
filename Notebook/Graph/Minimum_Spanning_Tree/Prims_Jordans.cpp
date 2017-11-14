@@ -2,10 +2,10 @@
  * Generate a Minimum Spanning Tree on `g'.
  * Returns the total edge weight of the MST.
  * Preconditions:
- *  parent.size() == g.size();
- *  `g' is bidirectional and connected.
+ * 	parent.size() == g.size();
+ * 	`g' is bidirectional and connected.
  * Postconditions:
- *  `parent[i]' refers to the parent vertex to `i' in the MST.
+ * 	`parent[i]' refers to the parent vertex to `i' in the MST.
  * Complexity:
  * 	Time: O(E log E)
  * 	Space: O(V + E)

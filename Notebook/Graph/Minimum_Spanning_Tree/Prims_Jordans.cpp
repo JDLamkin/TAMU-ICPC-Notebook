@@ -18,12 +18,13 @@ ll PrimsMST(graph& g, vector<ull>& parent) {
 	parent[vert] = vert;
 	while(true) {
 		vis[vert] = true;
-		for(auto e : g[vert]) q.push(make_pair(e.second, e.first));
-		while(!q.empty() && !vis[q.top().second]) q.pop();
+		for(auto e : g[vert]) q.push(make_pair(-e.second, e.first));
+		while(!q.empty() && vis[q.top().second]) q.pop();
 		if(q.empty()) return w;
 		auto e = q.top();
 		q.pop();
-		w += e.first;
+		w -= e.first;
 		parent[e.second] = vert;
+		vert = e.second;
 	}
 }

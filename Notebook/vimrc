@@ -1,4 +1,4 @@
-set nocp ai si noet ts=4 sw=4 sta sm nu ru rnu mouse=a
+set nocp ai si noet ts=4 sw=4 sta sm nu ru mouse=a
 set tf lz hls is ls=2 ch=2 list lcs=tab:>\ ,trail:. t_Co=256 spell
 colo molokai
 syn on

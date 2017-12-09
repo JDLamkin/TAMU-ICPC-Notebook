@@ -1,11 +1,5 @@
-#include <iostream>
-#include <vector>
-#include <map>
-#include <algorithm>
+#include <bits/stdc++.h>
 
 using namespace std;
 
 typedef long long ll;
-typedef unsigned long long ull;
-
-typedef vector<map<int, int>> graph;

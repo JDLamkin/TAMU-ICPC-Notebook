@@ -14,24 +14,24 @@ typedef vector<map<int, int>> graph;
 #define INF numeric_limits<int>::max()
 
 vector<vector<int>> dist(graph &g) {
-    vector<vector<int>> dist(g.size(), vector<int>(g.size(), INF));
+	vector<vector<int>> dist(g.size(), vector<int>(g.size(), INF));
 
-    for (int u = 0; u < g.size(); ++u) {
-        dist[u][u] = 0;
+	for (int u = 0; u < g.size(); ++u) {
+		dist[u][u] = 0;
 
-        for (auto v : g[u]) {
-            dist[u][v.first] = v.second;
-        }
-    }
+		for (auto v : g[u]) {
+			dist[u][v.first] = v.second;
+		}
+	}
 
-    for (int k = 0; k < g.size(); ++k) {
-        for (int i = 0; i < g.size(); ++i) {
-            for (int j = 0; j < g.size(); ++j) {
-                if (dist[i][k] != INF && dist[k][j] != INF && dist[i][j] > dist[i][k] + dist[k][j]) {
-                    dist[i][j] = dist[i][k] + dist[k][j];
-                }
-            }
-        }
-    }
-    return dist;
+	for (int k = 0; k < g.size(); ++k) {
+		for (int i = 0; i < g.size(); ++i) {
+			for (int j = 0; j < g.size(); ++j) {
+				if (dist[i][k] != INF && dist[k][j] != INF && dist[i][j] > dist[i][k] + dist[k][j]) {
+					dist[i][j] = dist[i][k] + dist[k][j];
+				}
+			}
+		}
+	}
+	return dist;
 }

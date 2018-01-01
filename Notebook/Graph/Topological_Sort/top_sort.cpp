@@ -13,7 +13,7 @@ typedef vector<map<int, int>> graph;
 
 bool cycle = false;
 
-vector<int> dist(graph &in, graph &out) {
+vector<int> top_sort(graph &in, graph &out) {
     vector<int> order;
     queue<int> next;
 

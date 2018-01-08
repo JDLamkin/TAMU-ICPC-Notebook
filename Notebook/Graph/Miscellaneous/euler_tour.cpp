@@ -1,5 +1,6 @@
 /* Hierholzer's algorithm finds an Euler circuit in a DAG.
  * Running time: O(V + E)
+ * Input constraints: Every vertex in g must have in degree == out degree
  */
 
 #include <vector>

@@ -4,8 +4,6 @@ using namespace std;
 struct disjoint_set{
     vector<int> parent;
 
-    ~disjoint_set() = default;
-    disjoint_set() = delete;
     disjoint_set(int n) : parent(n) {
         for (int i = 0; i < n; ++i) {
             parent[i] = i;

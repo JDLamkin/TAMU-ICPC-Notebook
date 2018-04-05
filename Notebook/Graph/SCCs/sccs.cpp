@@ -16,12 +16,12 @@ void dfs(Graph& g, int v, vector<bool>& visited, vector<int>& s){
 	for(int u : g[v]) if(!visited[u]) dfs(g, u, visited, s);
 }
 
+// O(V+E)
 vector<vector<int>> sccs(Graph& g){
 	vector<int> s;
 	vector<bool> visited(g.size());
 
-	for(int v=0; v<g.size(); ++v)
-		if(!visited[v]) dfs(g, v, visited, s);
+	for(int v=0; v<g.size(); ++v) if(!visited[v]) dfs(g, v, visited, s);
 
 	Graph t = transpose(g);
 

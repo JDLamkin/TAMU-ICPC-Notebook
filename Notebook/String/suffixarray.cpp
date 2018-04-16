@@ -59,6 +59,7 @@ struct sarray {
     }
 
     void build_lcp() {
+        fill(lcp.begin(), lcp.begin()+n, 0);
         vector<int> inv(n);
         for (int i = 0; i < n; ++i) {
             inv[sarr[i]] = i;

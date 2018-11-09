@@ -1,0 +1,4 @@
+* Use long long instead of int
+* Use setprecision
+* Communicate *all* thoughts (even the trivial ones)
+* Explore test cases for patterns

@@ -1,13 +1,15 @@
 #include <vector>
 #include <algorithm>
 
+using namespace std;
+
 #define BCK(v, i) ((v)[(v).size() - (i)])
 
 typedef long long ll;
 
 struct pnt {
 	ll x, y;
-	pnt(ll x = 0, ll y = x) : x(x), y(y) {}
+	pnt(ll x = 0, ll y = 0) : x(x), y(y) {}
 	pnt operator-() {return pnt(-x, -y);}
 	pnt operator+(pnt o) {return pnt(x + o.x, y + o.y);}
 	pnt operator-(pnt o) {return *this + (-o);}
@@ -34,6 +36,7 @@ vpt hull(vpt& pts) {
 	for(pnt& pt : pts) pt = pt - pvt;
 	sort(pts.begin(), pts.end(), cnvaCmp);
 	for(pnt& pt : pts) pt = pt + pvt;
+    vpt h;
 	for(pnt pt : pts) {
 		while(h.size() > 1 && cross(pt - BCK(h, 1), BCK(h, 1) - BCK(h, 2)) >= 0) h.pop_back();
 		h.push_back(pt);
@@ -46,7 +49,7 @@ ll area2(vpt& poly) {
 	pnt opt = BCK(poly, 1);
 	ll a = 0;
 	for(pnt pt : poly) {
-		a += cross(a, b);
+		a += cross(a, opt);
 		opt = pt;
 	}
 	return a;

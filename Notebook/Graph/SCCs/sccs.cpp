@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-//index = node, value = vector<out-edges>
-typedef vector<vector<int>> Graph;
+typedef unordered_map<int, vector<int>> Graph;
 #define pb push_back
 
 Graph transpose(Graph& g){
@@ -12,16 +11,16 @@ Graph transpose(Graph& g){
 
 void dfs(Graph& g, int v, vector<bool>& visited, vector<int>& s){
 	visited[v] = true;
-	s.pb(v);
 	for(int u : g[v]) if(!visited[u]) dfs(g, u, visited, s);
+	s.pb(v);
 }
 
-// O(V+E)
 vector<vector<int>> sccs(Graph& g){
 	vector<int> s;
 	vector<bool> visited(g.size());
 
-	for(int v=0; v<g.size(); ++v) if(!visited[v]) dfs(g, v, visited, s);
+	for(int v=0; v<g.size(); ++v)
+		if(!visited[v]) dfs(g, v, visited, s);
 
 	Graph t = transpose(g);
 

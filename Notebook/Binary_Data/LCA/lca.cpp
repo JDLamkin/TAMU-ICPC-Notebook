@@ -3,11 +3,13 @@
 
 using namespace std;
 
+#define MAXLOG 30
+
 struct tree {
     vector<int> parent, level;
     vector<vector<int>> ancestor;
 
-    tree(int n) : parent(n+1, -1), level(n+1, -1), ancestor(n+1, vector<int>((int)ceil(log2(n)), -1)) {
+    tree(int n) : parent(n+1, -1), level(n+1, -1), ancestor(n+1, vector<int>(MAXLOG, -1)) {
         level[0] = 0;
     }
 

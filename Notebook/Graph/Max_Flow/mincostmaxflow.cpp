@@ -29,12 +29,15 @@ vector<int> potentials(int src) {
 
     pot[src] = 0;
 
-    for (int i = 0; i < g.size()-1; ++i) {
+    bool change = true;
+    for (int i = 0; i < g.size()-1 && change; ++i) {
+        change = false;
         for (int u = 0; u < g.size(); ++u) {
             for (int k : g[u]) {
                 edge e = edges[k];
                 if (pot[u] != INF && e.cap - e.flow > 0 && pot[u] + e.cost < pot[e.v]) {
                     pot[e.v] = pot[u] + e.cost;
+                    change = true;
                 }
             }
         }

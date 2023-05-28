@@ -17,14 +17,13 @@ template<typename VI_or_MII> // Either vector<int> or map<int, int>
 vector<int> dijkstra1(vector<VI_or_MII>& g, int src){
     vector<int> dist(g.size(), INF);
     priority_queue<pii> pq;
-    dist[src] = 0;
     pq.push({0, src});
     while(!pq.empty()){
-        int cur = pq.top().second; pq.pop();
+        auto [cur, d] = pq.top(); pq.pop();
+		if(dist[cur] != INF) continue;
+		dist[cur] = -d;
         for(auto [u, w] : g[cur]){
-            if(dist[cur] + w < dist[u]){
-                pq.push({-(dist[u] = dist[cur] + w), adj});
-            }
+            if(dist[u] == INF) pq.push({d-w, u});
         }
     }
     return dist;
@@ -36,15 +35,13 @@ template<typename graph>
 vector<int> dijkstra2(vector<vector<int> >& g, int src){
     vector<int> dist(g.size(), INF);
     priority_queue<pii> pq;
-    dist[src] = 0;
     pq.push({0, src});
     while(!pq.empty()){
-        int cur = pq.top().second; pq.pop();
-		int d = dist[cur]+1;
+        auto [cur, d] = pq.top(); pq.pop();
+		if(dist[cur] != INF) continue;
+		dist[cur] = -d--;
         for(int adj : g[cur]){
-            if(d < dist[adj]){
-                pq.push({-(dist[adj] = d), adj});
-            }
+            if(dist[adj] == INF) pq.push({d, adj});
         }
     }
     return dist;

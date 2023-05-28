@@ -8,31 +8,44 @@
 #include <queue>
 
 using namespace std;
-
-typedef vector<map<int, int>> graph;
+typedef pair<int, int> pii;
 
 #define INF numeric_limits<int>::max()
 
-vector<int> dist(graph &g, int src) {
+// Graph with edge weights
+template<typename VI_or_MII> // Either vector<int> or map<int, int>
+vector<int> dijkstra1(vector<VI_or_MII>& g, int src){
     vector<int> dist(g.size(), INF);
-    vector<bool> vis(g.size());
-
-    auto cmp = [](pair<int, int> one, pair<int, int> two) { return one.second > two.second; };
-    priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(cmp)> pq(cmp);
+    priority_queue<pii> pq;
     dist[src] = 0;
-    pq.push(make_pair(src, 0));
-
-    while (!pq.empty()) {
-        auto cur = pq.top().first; pq.pop();
-        if (vis[cur]) continue;
-        vis[cur] = true;
-        for (auto adj : g[cur]) {
-            if (dist[cur] + adj.second < dist[adj.first]) {
-                dist[adj.first] = dist[cur] + adj.second;
-                pq.push(make_pair(adj.first, dist[adj.first]));
+    pq.push({0, src});
+    while(!pq.empty()){
+        int cur = pq.top().second; pq.pop();
+        for(auto [u, w] : g[cur]){
+            if(dist[cur] + w < dist[u]){
+                pq.push({-(dist[u] = dist[cur] + w), adj});
             }
         }
     }
+    return dist;
+}
 
+
+// Graph without edge weights
+template<typename graph>
+vector<int> dijkstra2(vector<vector<int> >& g, int src){
+    vector<int> dist(g.size(), INF);
+    priority_queue<pii> pq;
+    dist[src] = 0;
+    pq.push({0, src});
+    while(!pq.empty()){
+        int cur = pq.top().second; pq.pop();
+		int d = dist[cur]+1;
+        for(int adj : g[cur]){
+            if(d < dist[adj]){
+                pq.push({-(dist[adj] = d), adj});
+            }
+        }
+    }
     return dist;
 }
